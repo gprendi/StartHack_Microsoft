@@ -19,7 +19,10 @@
 
         <h1>EasyMed</h1>
         <h3>Upload your diagnonis or scan it directly</h3>
-        <input type="field" placeholder="Drag & Drog">
+        <form method=post enctype = multipart/form-data>
+        	<input type=file name=file  placeholder="Drag & Drop">
+       		<input type=submit value=Upload>
+       	</form>
         <h4>We support PDF, Plain Text, Jpeg or PNG</h4>
         <button type="button">Upload File</button> 
         <button type="button">SCAN</button>
