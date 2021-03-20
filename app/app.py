@@ -14,9 +14,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
 
-
-@app.route('/', methods=['GET','POST'])
-def upload_file():
+@app.route('/')
+def home():
+    return redirect(url_for('index'))
+    
+@app.route('/index', methods=['GET','POST'])
+def index():
     if request.method == 'POST':
         ##CHECK IF THE POST REQUEST HAS A FILE WITHIN IT
         if 'file' not in request.files:
@@ -31,14 +34,11 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file', filename= filename))
+            return redirect(url_for('output_page', filename= filename))
     return render_template('index.html')
 
-@app.route('/output')
-def Output_page():
-    return 'Output'
+@app.route('/output/<filename>')
+def output_page(filename):
+    return 'Output of %s'%(filename)
 
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
