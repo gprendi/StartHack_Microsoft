@@ -1,11 +1,10 @@
-#STARTHACK.eu - Microsoft Case
+STARTHACK.eu - Microsoft Case
 -> Group: 0x00000002
-Members:
-    Gerald Prendi
-    Edoardo Salvioni
-    Federico Lombardo
-    Davide Maran
 
+ Members:
+     Gerald Prendi,
+     Edoardo Salvioni
+   
 -> GOAL:
     Help users read their medical diagnoses, simplifying the medical terms and outputting them to the user
 -> Our Idea
