@@ -24,6 +24,7 @@ class Datasets():
             }
 
     def calc_score(self, text):
+        self.keywords = []
         sentence = ""
         sentences = [] 
         for i in text:
