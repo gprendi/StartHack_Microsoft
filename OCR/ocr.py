@@ -38,9 +38,6 @@ def OCR_PDF(pdf_path):
     '''
     # Variable to get count of total number of pages 
     filelimit = image_counter-1
-    
-    # Open in append mode
-    f = open(outfile, "a") 
 
     # loop through the images
     for i in range(1, filelimit + 1): 
@@ -52,30 +49,20 @@ def OCR_PDF(pdf_path):
         text = str(((pytesseract.image_to_string(Image.open(filename))))) 
     
         text = text.replace('-\n', '')     
-        
-        # Finally, write the processed text to the file. 
-        f.write(text) 
+
 
 
         os.remove(filename)
 
-    # Close the file after writing all the text. 
-    f.close()
+    return text
 
 
 def OCR_image(image_path):
     image_file = image_path
 
-    # opening the output file, in append mode
-    f = open(outfile, "a") 
-
     # converting the image text to string
     text = str(((pytesseract.image_to_string(Image.open(image_file)))))
-
+    
     text = text.replace('-\n', '')
 
-    # writing the text to the file.
-    f.write(text)
-
-    # closing the output file
-    f.close()
+    return text
