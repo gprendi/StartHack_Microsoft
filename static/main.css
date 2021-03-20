@@ -4,6 +4,11 @@ body {
 }
 
 #main {
-    background-color: aqua;
-    margin-left: 45%;
+    align-self: center;
+    vertical-align: middle;
+}
+
+h1 {
+    font-size: xx-large;
+    color: yellow;
 }
