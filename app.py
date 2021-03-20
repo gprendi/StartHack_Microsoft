@@ -2,6 +2,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template, sen
 from werkzeug.utils import secure_filename
 import os
 from OCR import OCR_PDF
+from TTS import tts
 
 
 ##CONSTANTS DECLARATION FOR UPLOADING FILES
