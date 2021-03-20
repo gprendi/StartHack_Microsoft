@@ -3,7 +3,7 @@ import csv
 import json
 
 
-class Datasets():
+class Ds():
     """ Class containing usabe python structs of the datasets"""
      #Create the Dictionaries for python
     def __init__(self):
@@ -11,7 +11,7 @@ class Datasets():
         self.baseDataset = {}
         self.symptom_severity = {}
         self.symptom_precautions = {}
-        with open('../datasets/dataset.csv', mode='r') as csv_file:
+        with open('datasets/dataset.csv', mode='r') as csv_file:
             csv_reader = csv.reader(csv_file)
             for line in csv_reader:
                 already_added = []
@@ -28,7 +28,7 @@ class Datasets():
                                 already_added.append(key)
 
         
-        with open('../datasets/symptom_precaution.csv', mode='r') as csv_file:
+        with open('datasets/symptom_precaution.csv', mode='r') as csv_file:
             csv_reader = csv.reader(csv_file)
             for line in csv_reader:
 
@@ -43,7 +43,7 @@ class Datasets():
                             self.symptom_precautions[key].append(loaded_line[i])
 
 
-        with open('../datasets/Symptom-severity.csv', mode='r') as csv_file:
+        with open('datasets/Symptom-severity.csv', mode='r') as csv_file:
             csv_reader = csv.reader(csv_file)
             for line in csv_reader:
                 loaded_line=list(line)

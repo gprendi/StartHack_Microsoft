@@ -5,10 +5,10 @@ from sklearn.ensemble import RandomForestClassifier
 
 # datasets
 
-df = pd.read_csv('../datasets/dataset.csv')
-df1 = pd.read_csv('../datasets/Symptom-severity.csv')
-df2 = pd.read_csv('../datasets/symptom_Description.csv')
-df3 = pd.read_csv('../datasets/symptom_precaution.csv')
+df = pd.read_csv('datasets/dataset.csv')
+df1 = pd.read_csv('datasets/Symptom-severity.csv')
+df2 = pd.read_csv('datasets/symptom_Description.csv')
+df3 = pd.read_csv('datasets/symptom_precaution.csv')
 
 
 def train():

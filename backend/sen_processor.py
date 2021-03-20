@@ -10,9 +10,9 @@ import pandas as pd
 class Datasets():
 
     def __init__(self):
-        self.dataset = pd.read_csv("../datasets/dataset.csv")
-        self.symptom_severity = pd.read_csv("../datasets/Symptom-severity.csv")
-        self.precautions = pd.read_csv("../datasets/symptom_precaution.csv")
+        self.dataset = pd.read_csv("datasets/dataset.csv")
+        self.symptom_severity = pd.read_csv("datasets/Symptom-severity.csv")
+        self.precautions = pd.read_csv("datasets/symptom_precaution.csv")
 
 
     def calc_symptoms(self):

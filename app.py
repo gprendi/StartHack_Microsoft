@@ -1,10 +1,14 @@
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 import os
-from OCR import OCR_PDF
+from OCR import OCR_PDF, OCR_image
 from TTS import tts
-from backend import Datasets
+from backend import Ds
+from backend import process_text
+from backend import predict
+from DICTIONARYAPI import request_definition
 import requests
+
 
 
 ##CONSTANTS DECLARATION FOR UPLOADING FILES
@@ -21,6 +25,29 @@ app.secret_key='blabla'
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+
+def data_Processer(filename):
+    sb = Ds()
+    text =''
+    if filename.rsplit('.',1)[1].lower() not in ['txt','png','jpeg']:
+        text = OCR_PDF(filename)
+    elif filename.rsplit('.',1)[1].lower() != 'txt':
+        text = OCR_image(filename)
+    else:
+        with open(filename, 'r') as f:
+            text = f.read()
+    definitions =[]
+    precautions = []
+    summary = process_text(text)
+    illness = predict(summary)
+    if illness in sb.symptom_precautions:
+        for k in sb.symptom_precautions[illness]:
+            precautions.append(k)
+
+    for i in summary:
+        definitions.append(request_definition(i))
+    
+    return summary.join(' '), definitions, precautions
     
 #Redirect to index
 @app.route('/')
@@ -54,12 +81,20 @@ def index():
 
 @app.route('/output/<filename>')
 def output_page(filename):
-    summary, worddefinitions, illness = somefunction(filename)
-    definitions = ''
-    precautions = ''
-    
+    filename = "uploads/"+filename
+    summary,definitions,precautions = data_Processer(filename)
     return render_template('output.html', summary= summary, definitions=definitions, precautions=precautions)
+
+
+
 
 
 if __name__ == "__main__":
     app.run()
+
+
+
+    
+
+
+

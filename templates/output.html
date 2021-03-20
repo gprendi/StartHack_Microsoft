@@ -1,0 +1,15 @@
+<h1>Summary</h1>
+<p>{{summary}}</p>
+
+<h1>Definitions</h1>
+{% for def in definitions %}
+    <p>{{def}}</p>
+{% endfor %}
+
+
+<h1>Possible Precautions</h1>
+{% if precautions %}
+    {% for prec in precautions %}
+        <p>{{prec}}</p>
+    {% endfor %}
+{% endif %}
