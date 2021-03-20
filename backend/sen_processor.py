@@ -23,7 +23,9 @@ class Datasets():
                 self.symptoms[i]:self.weights[i] for i in range(len(self.symptoms))
             }
 
-    def calc_score(self, text): 
+    def calc_score(self, text):
+        sentence = ""
+        sentences = [] 
         for i in text:
             sentence += i
             if i == ".":
@@ -59,3 +61,5 @@ def process_text(text):
     keywords = dt.calc_score(text)
 
     return keywords
+
+process_text("hello my man. how is you my mamn.")
