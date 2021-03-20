@@ -13,11 +13,11 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
-
+#Redirect to index
 @app.route('/')
 def home():
     return redirect(url_for('index'))
-    
+#index
 @app.route('/index', methods=['GET','POST'])
 def index():
     if request.method == 'POST':
