@@ -6,7 +6,7 @@ import sys
 from pdf2image import convert_from_path 
 import os 
 
-
+outfile = "raw_out.txt"
 def OCR_PDF(pdf_path):
     # Path of the pdf 
     PDF_file = pdf_path
@@ -39,9 +39,6 @@ def OCR_PDF(pdf_path):
     # Variable to get count of total number of pages 
     filelimit = image_counter-1
     
-    # Creating a text file to write the output 
-    outfile = "out_text.txt"
-    
     # Open in append mode
     f = open(outfile, "a") 
 
@@ -59,8 +56,26 @@ def OCR_PDF(pdf_path):
         # Finally, write the processed text to the file. 
         f.write(text) 
 
+
         os.remove(filename)
 
     # Close the file after writing all the text. 
     f.close()
 
+
+def OCR_image(image_path):
+    image_file = image_path
+
+    # opening the output file, in append mode
+    f = open(outfile, "a") 
+
+    # converting the image text to string
+    text = str(((pytesseract.image_to_string(Image.open(image_file)))))
+
+    text = text.replace('-\n', '')
+
+    # writing the text to the file.
+    f.write(text)
+
+    # closing the output file
+    f.close()
