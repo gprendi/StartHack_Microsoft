@@ -3,6 +3,8 @@ from werkzeug.utils import secure_filename
 import os
 from OCR import OCR_PDF
 from TTS import tts
+from backend import Datasets
+import requests
 
 
 ##CONSTANTS DECLARATION FOR UPLOADING FILES
@@ -51,7 +53,11 @@ def index():
 
 @app.route('/output/<filename>')
 def output_page(filename):
-    return 'Output of %s'%(filename)
+    summary, worddefinitions, illness = somefunction(filename)
+    definitions = ''
+    precautions = ''
+    
+    return render_template('output.html', summary= summary, definitions=definitions, precautions=precautions)
 
 
 if __name__ == "__main__":

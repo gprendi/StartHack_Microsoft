@@ -1,8 +1,10 @@
 
 import csv
 import json
-class Datasets():
 
+
+class Datasets():
+    """ Class containing usabe python structs of the datasets"""
      #Create the Dictionaries for python
     def __init__(self):
         #Create the Dictionaries for python
