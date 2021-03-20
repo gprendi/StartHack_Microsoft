@@ -12,6 +12,7 @@ ALLOWED_EXTENSIONS = {'txt','pdf','png','jpeg'}
 ##APP STARTUP 
 app= Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key='blabla'
 
 
 def allowed_file(filename):
@@ -25,22 +26,26 @@ def home():
 #index
 @app.route('/index', methods=['GET','POST'])
 def index():
+    error = None
     if request.method == 'POST':
         ##CHECK IF THE POST REQUEST HAS A FILE WITHIN IT
         if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
+            error ='No file was given please input a valid file'
+            
         file = request.files['file']
         #If user does not select file, browser also
         #submit an empty part without filename
         if file.filename == '':
-            flash('No Selected file')
-            return redirect(request.url)
+            error ='No Selected file. Please insert your file.'
+           
+        if not allowed_file(file.filename):
+            error ='Wrong file Format. Please try again with either of these: .pdf .png .jpeg .txt'
+            
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('output_page', filename= filename))
-    return render_template('index.html')
+    return render_template('index.html', error=error)
 
 @app.route('/output/<filename>')
 def output_page(filename):
