@@ -4,61 +4,12 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-	<head>
-		<style>
-		body {
-			background-color: white;
-		}
-		
-		h1 {
-			color: black;
-			text-align:	center;
-			font-family: verdana;
-		}
-		
-		h3 {
-			color: black;
-			text-align: center;
-			font-family: verdana;
-		}
-		
-		h4 {
-			color: black;
-			text-align: center;
-			font-family: verdana;
-		}
-		
-		h5 {
-			color:black;
-			text-align: center;
-			font-family: verdana;
-		}
-		
-		form{
-			display: inline-block;
-		}
-		button {
-			 background-color: #4CAF50;
-			 border: none;
-			 color: white;
-			 padding: 15px 32px;
-			 text-align: center;
-			 text-decoration: none;
-			 display: inline-block;
-			 font-size: 16px;
-		}
-		
-		p {
-			font-family: verdana;
-			font-size: 20px;
-		}
-		</style>
 		<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>EasyMed</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 	</head>
 	<body>
 		{% with messages = get_flashed_messages() %}

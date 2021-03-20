@@ -7,24 +7,20 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <h1><a href='/index'> EasyMed </a></h1>
+		<div id="main">
+        <h1><a href='./index'> EasyMed </a></h1>
         <h3>Upload your diagnosis in a supported file format.</h3>
         {% if error %}
         	<h5 class=error><strong>Error:</strong> {{error}}</h5>
        	{% endif %}
-       	<div style="text-align: center;font-family: Verdana">
+       	<div id="form">
 	        <form method=post enctype = multipart/form-data>
 	        	<input type=file name=file  placeholder="Drag & Drop">
-	       		<p><input style="background-color: lightblue; border: 12px; padding: 15px 32px;
-	       			text-align: center;
-	       			text-decoration: none;
-	       			display: inline-block;
-	       			fonr-size: 16px;
-	       			font-family: Verdana;
-	       			margin: 4px 2px" type=submit value=Analize>
+	       		<input type=submit value=Analize>
 	       	</form>
 		</div>
 	    <h4>We support PDF, Plain Text, Jpeg or PNG</h4> 
+	</div>
     </body>
 </html>
 

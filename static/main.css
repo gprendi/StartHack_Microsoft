@@ -1,0 +1,9 @@
+body {
+    margin: 5%;
+    padding: 4%;
+}
+
+#main {
+    background-color: aqua;
+    margin-left: 45%;
+}
