@@ -2,7 +2,8 @@
 __pycache__
 *.pyc
 
-
+# experimental == uncomment this
+# .exp/
 # output file from OCR
 out_text.txt
 
