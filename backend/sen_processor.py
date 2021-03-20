@@ -51,7 +51,7 @@ class Datasets():
                     self.keywords.append(phrase)
                     phrase = ""
 
-                print(phrase)
+                #print(phrase)
                 phrase += " "
 
         return self.keywords
