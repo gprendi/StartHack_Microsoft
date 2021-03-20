@@ -1,27 +1,31 @@
-{% extends "base.html" %}
-{% block body %}
-<!DOCTYPE html>
 <html>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+	<head>
+		<style>
+			h1 {color: orange; font-family: Verdana; font-size: xx-large;text-align: center; }
+			h3 {color: black; font-family: Verdana; font-size: medium; text-align: center;}
+			h4 {color: black; font-family: Verdana; font-size: medium; text-align: center;}
+			h5 {color: red; font-family: Verdana; font-size: medium;text-align: center;}
+			a {color: orange; font-family: Verdana;}
+			a:visited {color: orange; font-family: Verdana;}
+			a:hover {color: red;font-family: Verdana;}
+			form {border-bottom: 2px black;align-items: center; margin: auto; display:grid;}
+			input[type=submit],[type=file] {background-color: orange;padding: 16px 32px;margin: 4px 2px;margin: 0 auto;}
+		</style>
+	</head>
+	
+	<h1><a href='./index'> EasyMed </a></h1>
+	<h3>Upload your diagnosis in a supported file format.</h3>
+	{% if error %}
+		<h5 class=error><strong>Error:</strong> {{error}}</h5>
+	{% endif %}
+	
+	<form method=post enctype = multipart/form-data>
+		<input type=file name=file  placeholder="Drag & Drop">
+		<input type=submit value=Analize>
+	</form>
+	
+	<h4>We support PDF, Plain Text, Jpeg or PNG</h4> 
 
-		<div id="main">
-        <h1><a href='./index'> EasyMed </a></h1>
-        <h3>Upload your diagnosis in a supported file format.</h3>
-        {% if error %}
-        	<h5 class=error><strong>Error:</strong> {{error}}</h5>
-       	{% endif %}
-       	<div id="form">
-	        <form method=post enctype = multipart/form-data>
-	        	<input type=file name=file  placeholder="Drag & Drop">
-	       		<input type=submit value=Analize>
-	       	</form>
-		</div>
-	    <h4>We support PDF, Plain Text, Jpeg or PNG</h4> 
-	</div>
-    </body>
+    
 </html>
 
-{% endblock %}

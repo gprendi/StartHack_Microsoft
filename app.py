@@ -14,6 +14,7 @@ ALLOWED_EXTENSIONS = {'txt','pdf','png','jpeg'}
 
 ##APP STARTUP 
 app= Flask(__name__)
+app._static_folder='static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key='blabla'
 
