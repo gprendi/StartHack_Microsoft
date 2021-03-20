@@ -1,10 +1,9 @@
-from config import Config
+#from config import Config
 import requests
 import json
 
 def request_definition(word):
-        config = Config()
-        API_KEY = config.API_KEY
+        #config = Config()
         response = requests.get('https://www.dictionaryapi.com/api/v3/references/medical/json/%s?key=%s'%
             (word,API_KEY))
         text= response.json()

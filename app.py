@@ -46,8 +46,8 @@ def data_Processer(filename):
 
     for i in summary:
         definitions.append(request_definition(i))
-    
-    return summary.join(' '), definitions, precautions
+    print('%s ??? %s ??? %s' % (summary,definitions,precautions))
+    return ' '.join(summary), definitions, precautions
     
 #Redirect to index
 @app.route('/')
