@@ -37,7 +37,6 @@ def train():
     # Fill NaN with zero
     diseases = diseases.fillna(0)
 
-
     ds_train = diseases.sample(frac = 0.7, random_state = 1)
     ds_test = diseases.drop(index = ds_train.index)
 
@@ -56,24 +55,40 @@ def train():
     # 
     rfc = RandomForestClassifier()
     rfc.fit(x_train, y_train)
-    print(x_train)
     return rfc
     # print(classification_report(y_true=y_test.values, y_pred=result))
 
-def predict():
-    cols = [i.replace("_", " ") for i in df1.iloc[:,0]]
-    tmp = pd.melt(df.reset_index() ,id_vars = ['index'], value_vars = cols )
-    tmp['add1'] = 1
 
-    diseases = pd.pivot_table(tmp, 
-                            values = 'add1',
-                            index = 'index',
-                            columns = 'value')
+# predict
+def predict(keywords):
+    cols = df1.iloc[1:, 0].unique()
+    cols = [i.replace("_", " ") for i in cols]
+    vals = []
+    append_0 = True
+    
 
-    print(diseases)
+    for c in cols:
+
+        for k in keywords:
+            if k == c:
+                vals.append(1.0)
+                append_0 = False
+                break
+            append_0 = True
+        
+        if append_0:
+            vals.append(0.0)
+    
+
+    pd_cols = df1.iloc[1:, 0].unique()
+    pd_cols = [i for i in pd_cols]
+    
+    
+    vals = [vals]           
+    output = pd.DataFrame(vals, columns=pd_cols)
+    print(output)    
     model = train()
-    # disease = model.predict(keywords)
+    disease = model.predict(output)
 
     return disease[0]
 
-train()

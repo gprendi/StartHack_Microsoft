@@ -55,7 +55,7 @@ class Datasets():
 
 
 dt = Datasets()
-dt.calc_symptoms()
+dt.calc_symptoms() 
 
 print(dt.calc_score("itching in the tree, is not a loss of smell. loss of smell edo. is. a. good skin peeling. boy."))
 
