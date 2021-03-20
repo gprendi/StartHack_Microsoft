@@ -51,4 +51,4 @@ class Datasets():
                 
 if __name__ == "__main__":
     cd = Datasets()
-    print(cd.symptom_severity)
+    
