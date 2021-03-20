@@ -34,6 +34,7 @@ def index():
             error ='No file was given please input a valid file'
             
         file = request.files['file']
+        
         #If user does not select file, browser also
         #submit an empty part without filename
         if file.filename == '':
@@ -53,3 +54,5 @@ def output_page(filename):
     return 'Output of %s'%(filename)
 
 
+if __name__ == "__main__":
+    app.run()
