@@ -3,6 +3,7 @@
 
 ''' Data Preprocessing '''
 
+from matplotlib.pyplot import phase_spectrum
 import numpy as np
 import pandas as pd
 
@@ -15,44 +16,46 @@ class Datasets():
 
 
     def calc_symptoms(self):
-        self.symptoms = self.symptom_severity.loc[:, "Symptom"]
-        self.weights = self.symptom_severity.loc[:, "weight"]
-
-        for s in range(len(self.symptoms)):
-            self.symptoms[s] = self.symptoms[s].replace("_", " ")
+        self.symptoms = [i.replace("_", " ") for i in self.symptom_severity.iloc[:,0]]
+        self.weights = [i for i in self.symptom_severity.iloc[:,1]]
 
         self.sym_weight = {
                 self.symptoms[i]:self.weights[i] for i in range(len(self.symptoms))
             }
 
-    def calc_score(self, text):
-        text_end = False
-        self.keywords = []
-        
-        sentences = []
-
-        sentence = ""
+    def calc_score(self, text): 
         for i in text:
             sentence += i
             if i == ".":
                 sentences.append(sentence)
                 sentence = ""
 
-        word = ""
+        #TODO find keywords
         for s in sentences:
-            for w in s:
-                word += w
-                if w == " ":
-                    if "itching" in self.symptoms:
-                        self.keywords.append(itching)
-                        word = ""
+            s = s.replace(".", " ")
+            s = s.replace(",", " ")
+            words = s.split()
+
+
+            phrase = ""
+            for w in words:
+                phrase += w
+                if w in self.symptoms:
+                    self.keywords.append(w)
+                    phrase = ""
+
+                elif phrase in self.symptoms:
+                    self.keywords.append(phrase)
+                    phrase = ""
+
+                print(phrase)
+                phrase += " "
 
         return self.keywords
 
 
 dt = Datasets()
 dt.calc_symptoms()
-print(dt.symptoms)
-print("=====================================")
-print(dt.calc_score("itching and swollen_legs are good for the health. geri. ola."))
+
+print(dt.calc_score("itching in the tree, is not a loss of smell. loss of smell edo. is. a. good skin peeling. boy."))
 
