@@ -1,4 +1,10 @@
+# python files
 __pycache__
 *.pyc
+
+
+# output file from OCR
+out_text.txt
+
 
 
