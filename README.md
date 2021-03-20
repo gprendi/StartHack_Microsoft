@@ -4,7 +4,7 @@ Members:
     Gerald Prendi
     Edoardo Salvioni
     Federico Lombardo
-    Davide Surname(idk)
+    Davide Maran
 
 -> GOAL:
     Help users read their medical diagnoses, simplifying the medical terms and outputting them to the user
