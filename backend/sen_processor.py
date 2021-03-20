@@ -7,7 +7,10 @@ from matplotlib.pyplot import phase_spectrum
 import numpy as np
 import pandas as pd
 
+
 class Datasets():
+
+    PUNCTUATION = '.,;:"\'?!'
 
     def __init__(self):
         self.dataset = pd.read_csv("datasets/dataset.csv")
@@ -35,8 +38,8 @@ class Datasets():
 
         #TODO find keywords
         for s in sentences:
-            s = s.replace(".", " ")
-            s = s.replace(",", " ")
+            if s in PUNCTUATION:
+                s= s.replace(s,' ')
             words = s.split()
 
 
