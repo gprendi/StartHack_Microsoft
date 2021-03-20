@@ -10,9 +10,10 @@ import pandas as pd
 
 class Datasets():
 
-    PUNCTUATION = '.,;:"\'?!'
+    
 
     def __init__(self):
+        self.PUNCTUATION = '.,;:"\'?!'
         self.dataset = pd.read_csv("datasets/dataset.csv")
         self.symptom_severity = pd.read_csv("datasets/Symptom-severity.csv")
         self.precautions = pd.read_csv("datasets/symptom_precaution.csv")
@@ -38,7 +39,7 @@ class Datasets():
 
         #TODO find keywords
         for s in sentences:
-            if s in PUNCTUATION:
+            if s in self.PUNCTUATION:
                 s= s.replace(s,' ')
             words = s.split()
 
