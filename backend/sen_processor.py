@@ -53,9 +53,9 @@ class Datasets():
 
         return self.keywords
 
+def process_text(text):
+    dt = Datasets()
+    dt.calc_symptoms()
+    keywords = dt.calc_score(text)
 
-dt = Datasets()
-dt.calc_symptoms() 
-
-print(dt.calc_score("itching in the tree, is not a loss of smell. loss of smell edo. is. a. good skin peeling. boy."))
-
+    return keywords
