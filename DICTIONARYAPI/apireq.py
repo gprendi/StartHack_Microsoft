@@ -4,7 +4,7 @@ import json
 
 def request_definition(word):
     #config = Config()
-    
+    # API_KEY the API key from Merriam Websters' dictionary :  https://dictionaryapi.com/products/api-medical-dictionary
     response = requests.get('https://www.dictionaryapi.com/api/v3/references/medical/json/%s?key=%s'%
         (word,API_KEY))
     text= response.json()

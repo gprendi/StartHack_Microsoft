@@ -27,7 +27,7 @@ class Datasets():
                 self.symptoms[i]:self.weights[i] for i in range(len(self.symptoms))
             }
 
-    def calc_score(self, text):
+    def find_keywords(self, text):
         self.keywords = []
         sentence = ""
         sentences = [] 
@@ -69,6 +69,6 @@ class Datasets():
 def process_text(text):
     dt = Datasets()
     dt.calc_symptoms()
-    keywords = dt.calc_score(text)
+    keywords = dt.find_keywords(text)
     print(keywords)
     return keywords
