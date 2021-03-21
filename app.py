@@ -2,7 +2,6 @@ from flask import Flask, flash, request, redirect, url_for, render_template, sen
 from werkzeug.utils import secure_filename
 import os
 from OCR import OCR_PDF, OCR_image
-from TTS import tts
 from backend import Ds
 from backend import process_text
 from backend import predict
@@ -10,6 +9,8 @@ from DICTIONARYAPI import request_definition
 import requests
 
 
+from honeybadger import honeybadger
+honeybadger.configure(api_key='0fab47e9')
 
 ##CONSTANTS DECLARATION FOR UPLOADING FILES
 
