@@ -24,7 +24,7 @@ lethargy,2
 patches_in_throat,6
 irregular_sugar_level,5
 cough,4
-high_fever,7
+fever,7
 sunken_eyes,3
 breathlessness,4
 sweating,3
@@ -40,7 +40,7 @@ back_pain,3
 constipation,4
 abdominal_pain,4
 diarrhoea,6
-mild_fever,5
+high_fever,5
 yellow_urine,4
 yellowing_of_eyes,4
 acute_liver_failure,6

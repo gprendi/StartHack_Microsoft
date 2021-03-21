@@ -22,13 +22,12 @@ def train():
     # temporary
     tmp = pd.melt(df.reset_index() ,id_vars = ['index'], value_vars = cols )
     tmp['add1'] = 1
-    
+
     # diseases table
     diseases = pd.pivot_table(tmp, 
                             values = 'add1',
                             index = 'index',
                             columns = 'value')
-   
 
     # Add labels column
     diseases.insert(0,'label',df['Disease'])
@@ -39,7 +38,6 @@ def train():
 
     ds_train = diseases.sample(frac = 0.7, random_state = 1)
     ds_test = diseases.drop(index = ds_train.index)
-
 
     x_train =  ds_train.drop('label', axis = 1)
     y_train =  ds_train['label']
@@ -62,7 +60,7 @@ def train():
 # predict
 def predict(keywords):
     cols = df1.iloc[1:, 0].unique()
-    cols = [i.replace("_", " ") for i in cols]
+    cols = sorted([i.replace("_", " ") for i in cols])
     vals = []
     append_0 = True
     
@@ -79,14 +77,13 @@ def predict(keywords):
         if append_0:
             vals.append(0.0)
     
-
+    print(vals)
     pd_cols = df1.iloc[1:, 0].unique()
-    pd_cols = [i for i in pd_cols]
+    pd_cols = sorted([i for i in pd_cols])
     
     
     vals = [vals]           
-    output = pd.DataFrame(vals, columns=pd_cols)
-    print(output)    
+    output = pd.DataFrame(vals, columns=pd_cols)   
     model = train()
     disease = model.predict(output)
 

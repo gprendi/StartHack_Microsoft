@@ -40,6 +40,7 @@ def data_Processer(filename):
     precautions = []
     summary = process_text(text)
     illness = predict(summary)
+    print(illness)
     if illness in sb.symptom_precautions:
         for k in sb.symptom_precautions[illness]:
             precautions.append(k)

@@ -37,34 +37,38 @@ class Datasets():
                 sentences.append(sentence)
                 sentence = ""
 
-        #TODO find keywords
+        words = []
         for s in sentences:
             if s in self.PUNCTUATION:
-                s= s.replace(s,' ')
-            words = s.split()
+                s = s.replace(s,' ')
+            words.extend(s.split())
 
+        sym = self.symptoms
+        for s in sym:
+            block = s.split()
+            
+            block_size = len(block)                   
 
-            phrase = ""
+            score = 0
+            i = 0
+            
             for w in words:
-                phrase += w
-                if w in self.symptoms:
-                    self.keywords.append(w)
-                    phrase = ""
-
-                elif phrase in self.symptoms:
-                    self.keywords.append(phrase)
-                    phrase = ""
-
-                #print(phrase)
-                phrase += " "
-
+                if w == block[i]:
+                    score += 1
+                    if i < block_size - 1:
+                        i += 1
+                    
+                elif score == block_size:
+                    if not(s in self.keywords):
+                        self.keywords.append(s)
+                    score = 0
+                    i = 0
+           
         return self.keywords
 
 def process_text(text):
     dt = Datasets()
     dt.calc_symptoms()
     keywords = dt.calc_score(text)
-
+    print(keywords)
     return keywords
-
-process_text("hello my man. how is you my mamn.")
