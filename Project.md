@@ -8,7 +8,7 @@
 ## Group: 0x00000002
 ## Members:
     1. Gerald Prendi
-    2  Eduardo Salvioni
+    2  Edoardo Salvioni
 
 ## Goal:
     1. Simplify medical reports, to the point that they accessible to anyone.
