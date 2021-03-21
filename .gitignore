@@ -1,6 +1,7 @@
 # python files
 __pycache__
 *.pyc
+./env
 
 # experimental == uncomment this
 # .exp/
@@ -10,4 +11,9 @@ out_text.txt
 #API requirements
 /DICTIONARYAPI/Config.py
 
+#logs
 log.txt
+
+#ide files
+.vscode/
+
